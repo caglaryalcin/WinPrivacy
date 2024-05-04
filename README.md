@@ -2,7 +2,5 @@ This script does exactly what ShutUp10++ does. My goal is to remove the question
 
 ![](https://raw.githubusercontent.com/caglaryalcin/caglaryalcin/main/cu.png)
 
-![](https://raw.githubusercontent.com/caglaryalcin/caglaryalcin/main/lm.png)
-
 > [!NOTE]  
 > The legacy version of Microsoft Edge is not included in the script as it is no longer used.
