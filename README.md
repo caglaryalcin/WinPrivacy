@@ -6,7 +6,7 @@ This script does exactly what ShutUp10++ does. My goal is to remove the question
 ## Start the script
 
 ```powershell
-iwr "set.caglaryalcin.com" -UseB | iex
+iwr "privacy.caglaryalcin.com" -UseB | iex
 ```
 
 ![](https://raw.githubusercontent.com/caglaryalcin/caglaryalcin/main/lm.png)
