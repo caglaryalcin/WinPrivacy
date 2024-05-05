@@ -21,6 +21,92 @@ do {
     switch ($choice) {
         # Current user
         "1" {
+            function Test-HKCURegistryPaths {
+                $registryPaths = @(
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\PushNotifications",
+                    "HKCU:\Software\Microsoft\input\TIPC",
+                    "HKCU:\Software\Microsoft\TabletTip\1.7",
+                    "HKCU:\Control Panel\International\User Profile",
+                    "HKCU:\Software\Microsoft\Clipboard",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\activity",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\cellularData",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\gazeInput",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureProgrammatic",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureProgrammatic\NonPackaged",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureWithoutBorder",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureWithoutBorder\NonPackaged",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\musicLibrary",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\downloadsFolder",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications",
+                    "HKCU:\Software\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps",
+                    "HKCU:\Software\Policies\Microsoft\Edge",
+                    "HKCU:\Software\Policies\Microsoft\Office\16.0\osm",
+                    "HKCU:\Software\Policies\Microsoft\Office\16.0\Common",
+                    "HKCU:\Software\Policies\Microsoft\Office\16.0\Common\Feedback",
+                    "HKCU:\Software\Policies\Microsoft\Office\16.0\Common\Privacy",
+                    "HKCU:\Software\Policies\Microsoft\Office\Common\ClientTelemetry",
+                    "HKCU:\Software\Microsoft\Office\16.0\Common\MailSettings",
+                    "HKCU:\Software\Microsoft\Office\Common\ClientTelemetry",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Personalization",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\BrowserSettings",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Credentials",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Language",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Accessibility",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Windows",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Windows Search",
+                    "HKCU:\Software\Microsoft\InputPersonalization",
+                    "HKCU:\Software\Microsoft\InputPersonalization\TrainedDataStore",
+                    "HKCU:\Software\Microsoft\Personalization\Settings",
+                    "HKCU:\Software\Policies\Microsoft\Windows\WindowsCopilot",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Privacy",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings",
+                    "HKCU:\Software\Policies\Microsoft\Windows\Explorer",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSettings",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer",
+                    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds",
+                    "HKCU:\Software\Microsoft\Siuf\Rules",
+                    "HKCU:\Software\Microsoft\MediaPlayer\Preferences"
+                )
+            
+                foreach ($path in $registryPaths) {
+                    if (-not (Test-Path $path)) {
+                        New-Item -Path $path -Force | Out-Null
+                    }
+                    else {
+                        ##
+                    }
+                }
+            }
+            
+            Test-HKCURegistryPaths
+
             do {
                 Write-Host `n"Which settings do you want to use?"
                 Write-Host `n"[1]" -NoNewline
@@ -303,7 +389,10 @@ do {
                             }
                         }
 
-                        Write-Host "The recommended settings for the current user have been applied." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"The recommended settings for the current user have been applied." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host "For detailed information > " -NoNewline
+                        Write-Host "https://github.com/caglaryalcin/StayPrivacy" -ForegroundColor DarkCyan
+
                     }
                     # Current User - Recommended and Somewhat recommended settings
                     "2" {
@@ -720,7 +809,9 @@ do {
                             }
                         }
 
-                        Write-Host "The recommended and somewhat recommended settings for the current user have been applied." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"The recommended and somewhat recommended settings for the current user have been applied." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host "For detailed information > " -NoNewline
+                        Write-Host "https://github.com/caglaryalcin/StayPrivacy" -ForegroundColor DarkCyan
                     }
                     # Current User - All settings
                     "3" {
@@ -1170,7 +1261,9 @@ do {
                             }
                         }
 
-                        Write-Host "All settings have been applied for the current user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"All settings have been applied for the current user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host "For detailed information > " -NoNewline
+                        Write-Host "https://github.com/caglaryalcin/StayPrivacy" -ForegroundColor DarkCyan
 
                     }
 
@@ -1183,6 +1276,139 @@ do {
         }
         # All users
         "2" {
+            function Test-HKLMRegistryPaths {
+                $registryPaths = @(
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\System"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\activity"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\cellularData"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\gazeInput"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureProgrammatic"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCaptureWithoutBorder"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\musicLibrary"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\downloadsFolder"
+                    "HKLM:\SOFTWARE\Microsoft\Speech_OneCore\Preferences"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\InputPersonalization"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\InputPersonalization"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Windows Search"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\LocationAndSensors"
+                    "HKLM:\SYSTEM\ControlSet001\Services\lfsvc\Service\Configuration"
+                    "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration"
+                    "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\MRT"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\MRT"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows Defender\Spynet"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Edge"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Edge"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Edge"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Edge"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DataCollection"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Maps"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Maps"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform"
+                    "HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet"
+                    "HKLM:\SYSTEM\ControlSet001\Services\NlaSvc\Parameters\Internet"
+                    "HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Bluetooth"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\HandwritingErrorReports"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Messaging"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\TabletPC"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\AppCompat"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\HandwritingErrorReports"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Messaging"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Personalization"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\TabletPC"
+                    "HKLM:\SOFTWARE\Microsoft\SQMClient\Windows"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Biometrics"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CredUI"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\AppCompat"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\CredUI"
+                    "HKLM:\SYSTEM\CurrentControlSet\Services\DiagTrack"
+                    "HKLM:\SYSTEM\CurrentControlSet\Services\dmwappushservice"
+                    "HKLM:\SYSTEM\CurrentControlSet\Control\WMI\Autologger\AutoLogger-Diagtrack-Listener"
+                    "HKLM:\SYSTEM\ControlSet001\Services\dmwappushservice"
+                    "HKLM:\SYSTEM\ControlSet001\Services\DiagTrack"
+                    "HKLM:\SYSTEM\ControlSet001\Control\WMI\Autologger\AutoLogger-Diagtrack-Listener"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\WMDRM"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"
+                    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Policies\Explorer"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Windows Feeds"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\AppCompat"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DataCollection"
+                    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsCopilot"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\OneDrive"
+                    "HKLM:\SOFTWARE\Microsoft\OneDrive"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Speech"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Speech"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DeliveryOptimization"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate"
+                    "HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\System"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsStore\WindowsUpdate"
+                    "HKLM:\SYSTEM\ControlSet001\Services\wuauserv"
+                    "HKLM:\SYSTEM\CurrentControlSet\Services\wuauserv"
+                    "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+                    "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU"
+                    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Services\7971f918-a847-4430-9279-4a52d1efe18d"
+                )
+            
+                $currentSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+                $userKey = "HKU:\$currentSID"
+                Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Value 0
+
+                foreach ($path in $registryPaths) {
+                    if (-not (Test-Path $path)) {
+                        New-Item -Path $path -Force | Out-Null
+                    }
+                    else {
+                        ##
+                    }
+                }
+            }
+            
+            Test-HKLMRegistryPaths
+
             do {
                 Write-Host `n"Which settings do you want to use?"
                 Write-Host `n"[1]" -NoNewline
@@ -1520,7 +1746,9 @@ do {
                             }
                         }
 
-                        Write-Host "Recommended and somewhat recommended settings were applied for current user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"Recommended and somewhat recommended settings were applied for current user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host "For detailed information > " -NoNewline
+                        Write-Host "https://github.com/caglaryalcin/StayPrivacy" -ForegroundColor DarkCyan
                     }
                     # All Users - Recommended and Somewhat recommended settings
                     "2" {
@@ -2060,7 +2288,9 @@ do {
                             }
                         }
 
-                        Write-Host "Recommended and somewhat recommended settings were applied for all users." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"Recommended and somewhat recommended settings were applied for all users." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host "For detailed information > " -NoNewline
+                        Write-Host "https://github.com/caglaryalcin/StayPrivacy" -ForegroundColor DarkCyan
 
                     }
                     # All Users - All settings
@@ -2676,7 +2906,9 @@ do {
                             }
                         }
 
-                        Write-Host "All settings have been applied for the all user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"All settings have been applied for the all user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host "For detailed information > " -NoNewline
+                        Write-Host "https://github.com/caglaryalcin/StayPrivacy" -ForegroundColor DarkCyan
                     }
 
                     default {
