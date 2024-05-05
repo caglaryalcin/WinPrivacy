@@ -9,7 +9,7 @@ This script does exactly what ShutUp10++ does. My goal is to remove the question
 > Powershell must be run as admin
 
 ```powershell
-iwr "private.caglaryalcin.com" -UseB | iex
+iwr "privacy.caglaryalcin.com" -UseB | iex
 ```
 
 ![](https://raw.githubusercontent.com/caglaryalcin/caglaryalcin/main/lm.png)
