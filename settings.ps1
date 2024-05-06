@@ -10,7 +10,7 @@ do {
     Write-Host "current user" -BackgroundColor Black -ForegroundColor Yellow -NoNewLine
     Write-Host ", or should they apply to " -NoNewline
     Write-Host "all users?" -BackgroundColor Black -ForegroundColor Yellow
-    Write-Host `n"[1]" -NoNewline -BackgroundColor Black -ForegroundColor Yellow
+    Write-Host "[1]" -NoNewline -BackgroundColor Black -ForegroundColor Yellow
     Write-Host " - For the current user"
     Write-Host "[2]" -NoNewline -BackgroundColor Black -ForegroundColor Yellow
     Write-Host " - For all users"
