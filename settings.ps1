@@ -1393,9 +1393,15 @@ do {
                     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Services\7971f918-a847-4430-9279-4a52d1efe18d"
                 )
             
+                #Disable Windows Update via peer-to-peer
+                New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS | Out-Null
                 $currentSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
                 $userKey = "HKU:\$currentSID"
-                Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Value 0
+                If (!(Test-Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization")) {
+                    New-Item -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Force | Out-Null
+                }
+        
+                Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Type DWord -Value 0 -ErrorAction Stop
 
                 foreach ($path in $registryPaths) {
                     if (-not (Test-Path $path)) {
@@ -1736,9 +1742,15 @@ do {
                             }
                         }
 
+                        #Disable Windows Update via peer-to-peer
+                        New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS | Out-Null
                         $currentSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
                         $userKey = "HKU:\$currentSID"
-                        Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Value 0 #Disable Windows Update via peer-to-peer
+                        If (!(Test-Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization")) {
+                            New-Item -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Force | Out-Null
+                        }
+                
+                        Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Type DWord -Value 0 -ErrorAction Stop
 
                         foreach ($settingType in $UpdateRecommendedSettings.Keys) {
                             foreach ($key in $UpdateRecommendedSettings[$settingType].Keys) {
@@ -2248,9 +2260,21 @@ do {
                             }
                         }
 
+                        #Disable Windows Update via peer-to-peer
+                        New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS | Out-Null
                         $currentSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
                         $userKey = "HKU:\$currentSID"
-                        Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Value 0 #Disable Windows Update via peer-to-peer
+                        If (!(Test-Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization")) {
+                            New-Item -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Force | Out-Null
+                        }
+                
+                        Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Type DWord -Value 0 -ErrorAction Stop
+
+                        foreach ($settingType in $UpdateRecommendedSettings.Keys) {
+                            foreach ($key in $UpdateRecommendedSettings[$settingType].Keys) {
+                                Set-ItemProperty -Path $settingType -Name $key -Value $UpdateRecommendedSettings[$settingType][$key]
+                            }
+                        }
 
                         $UpdateLimitedSettings = @{
                             "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate"                    = @{
@@ -2884,9 +2908,15 @@ do {
                             }
                         }
 
+                        #Disable Windows Update via peer-to-peer
+                        New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS | Out-Null
                         $currentSID = [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
                         $userKey = "HKU:\$currentSID"
-                        Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Value 0 #Disable Windows Update via peer-to-peer
+                        If (!(Test-Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization")) {
+                            New-Item -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Force | Out-Null
+                        }
+                
+                        Set-ItemProperty -Path "$userKey\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization" -Name "SystemSettingsDownloadMode" -Type DWord -Value 0 -ErrorAction Stop
 
                         foreach ($settingType in $UpdateRecommendedSettings.Keys) {
                             foreach ($key in $UpdateRecommendedSettings[$settingType].Keys) {
