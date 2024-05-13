@@ -389,7 +389,7 @@ do {
                             }
                         }
 
-                        Write-Host `n"The recommended settings for the current user have been applied." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"[The recommended settings for the current user have been applied.]" -BackgroundColor Black -ForegroundColor Green
                         Write-Host "For detailed information > " -NoNewline
                         Write-Host "https://github.com/caglaryalcin/WinPrivacy" -ForegroundColor DarkCyan
 
@@ -809,7 +809,7 @@ do {
                             }
                         }
 
-                        Write-Host `n"The recommended and somewhat recommended settings for the current user have been applied." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"[The recommended and somewhat recommended settings for the current user have been applied.]" -BackgroundColor Black -ForegroundColor Green
                         Write-Host "For detailed information > " -NoNewline
                         Write-Host "https://github.com/caglaryalcin/WinPrivacy" -ForegroundColor DarkCyan
                     }
@@ -1261,7 +1261,7 @@ do {
                             }
                         }
 
-                        Write-Host `n"All settings have been applied for the current user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"[All settings have been applied for the current user.]" -BackgroundColor Black -ForegroundColor Green
                         Write-Host "For detailed information > " -NoNewline
                         Write-Host "https://github.com/caglaryalcin/WinPrivacy" -ForegroundColor DarkCyan
 
@@ -1758,7 +1758,7 @@ do {
                             }
                         }
 
-                        Write-Host `n"Recommended and somewhat recommended settings were applied for current user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"[Recommended and somewhat recommended settings were applied for current user.]" -BackgroundColor Black -ForegroundColor Green
                         Write-Host "For detailed information > " -NoNewline
                         Write-Host "https://github.com/caglaryalcin/WinPrivacy" -ForegroundColor DarkCyan
                     }
@@ -2312,7 +2312,7 @@ do {
                             }
                         }
 
-                        Write-Host `n"Recommended and somewhat recommended settings were applied for all users." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"[Recommended and somewhat recommended settings were applied for all users.]" -BackgroundColor Black -ForegroundColor Green
                         Write-Host "For detailed information > " -NoNewline
                         Write-Host "https://github.com/caglaryalcin/WinPrivacy" -ForegroundColor DarkCyan
 
@@ -2936,7 +2936,7 @@ do {
                             }
                         }
 
-                        Write-Host `n"All settings have been applied for the all user." -BackgroundColor Black -ForegroundColor Green
+                        Write-Host `n"[All settings have been applied for the all user.]" -BackgroundColor Black -ForegroundColor Green
                         Write-Host "For detailed information > " -NoNewline
                         Write-Host "https://github.com/caglaryalcin/WinPrivacy" -ForegroundColor DarkCyan
                     }
