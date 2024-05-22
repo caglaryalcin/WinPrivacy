@@ -10,7 +10,7 @@ do {
     Write-Host "current user" -BackgroundColor Black -ForegroundColor Yellow -NoNewLine
     Write-Host ", or should they apply to " -NoNewline
     Write-Host "all users?" -BackgroundColor Black -ForegroundColor Yellow
-    Write-Host "[1]" -NoNewline -BackgroundColor Black -ForegroundColor Yellow
+    Write-Host `n"[1]" -NoNewline -BackgroundColor Black -ForegroundColor Yellow
     Write-Host " - For the current user"
     Write-Host "[2]" -NoNewline -BackgroundColor Black -ForegroundColor Yellow
     Write-Host " - For all users"
@@ -1569,6 +1569,9 @@ do {
                             "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DataCollection" = @{
                                 "DoNotShowFeedbackNotifications" = 1 #Disable feedback reminders
                             }
+                            "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows NT\Terminal Services" = @{
+                                "fAllowToGetHelp" = 0 #Disable remote assistance connections to this computer
+                            }
                         }
 
                         foreach ($settingType in $MiscellaneousRecommendedSettings.Keys) {
@@ -2003,6 +2006,9 @@ do {
                             }
                             "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DataCollection" = @{
                                 "DoNotShowFeedbackNotifications" = 1 #Disable feedback reminders
+                            }
+                            "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows NT\Terminal Services" = @{
+                                "fAllowToGetHelp" = 0 #Disable remote assistance connections to this computer
                             }
                         }
 
@@ -2579,6 +2585,9 @@ do {
                             }
                             "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DataCollection" = @{
                                 "DoNotShowFeedbackNotifications" = 1 #Disable feedback reminders
+                            }
+                            "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows NT\Terminal Services" = @{
+                                "fAllowToGetHelp" = 0 #Disable remote assistance connections to this computer
                             }
                         }
 
