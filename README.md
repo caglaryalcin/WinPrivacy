@@ -5,6 +5,9 @@ This script does exactly what ShutUp10++ does. My goal is to remove the question
 
 ## Start the script
 
+> [!WARNING]  
+> Great care went into making sure this script does not unintentionally break any OS functionality, but use at your own risk!
+
 ```powershell
 iwr "winprivacy.caglaryalcin.com" -UseB | iex
 ```
