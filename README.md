@@ -12,4 +12,4 @@ This script does exactly what ShutUp10++ does. My goal is to remove the question
 iwr "winprivacy.caglaryalcin.com" -UseB | iex
 ```
 
-![](https://raw.githubusercontent.com/caglaryalcin/caglaryalcin/main/lm.png)
+![image](https://github.com/user-attachments/assets/79c5f419-97dc-4662-9d61-d127dc45a661)
